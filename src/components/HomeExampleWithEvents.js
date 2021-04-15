@@ -12,7 +12,9 @@ export class HomeExampleWithEvents extends React.Component {
         // we'll have to define state for this component so that wehnever a changes occurs DOM gets updated as such
         this.state = {
             age: props.initialAge,
-            status: 0
+            status: 0,
+            // lets define state for HomeLink as well
+            homeLink: 'Changed Link'
         }
 
         // lets also change sttaus after 2 seconds
@@ -32,13 +34,19 @@ export class HomeExampleWithEvents extends React.Component {
             age: this.state.age + 2
         });
     }
+
+    // lets create utility function for HomeLink change from chilkd component
+    // onChangeLink() {
+    //   this.props.changeLink(this.state.homeLink);
+    // }
     
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-xs-10 col-xs-offset-1">
-            <h4>Within an another component</h4>
+            {/* <h4>Within an another component</h4> */}
+            {this.props.greet ? <h4>From Child To Parent</h4> : <h4>another component using Events</h4>}
 
             <div>
               User Name: {this.props.name} and User Age Before Increment: {this.props.age}
@@ -56,6 +64,15 @@ export class HomeExampleWithEvents extends React.Component {
             <button className='btn btn-primary' onClick={() => this.onHandleButtonClicked()}>Click to increase age</button>
             
             <p>User Name: {this.props.name} and User Age After Each Button Click: {this.state.age} && status: {this.state.status}</p>
+
+            {/* lets call parent function greet from this child component */}
+            <hr />
+            <button className='btn btn-primary' onClick={this.props.greet}>Get Greet From Here</button>
+            <hr />
+            {/* lets create a button for to trigger HomeLink text change */}
+            {/* we'll also use 'this' binding as we used this within our button onClick function */}
+            {/* created a separate component for it for simplicity and usecase */}
+            {/* <button className='btn btn-primary' onClick={this.onChangeLink.bind(this)}>Change Home Link Text</button> */}
           </div>
         </div>
       </div>
@@ -67,4 +84,5 @@ export class HomeExampleWithEvents extends React.Component {
 HomeExampleWithEvents.propTypes = {
   name: PropTypes.string,
   initialAge: PropTypes.number,
+  greet: PropTypes.func
 };

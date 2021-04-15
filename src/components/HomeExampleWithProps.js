@@ -13,7 +13,7 @@ export class HomeExampleWithProps extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-xs-10 col-xs-offset-1">
-            <h2>In an another component</h2>
+            <h2>a component using Props</h2>
             <p>
               Name is: {this.props.user.name} and Hobbies are:{" "}
               {this.props.user.hobbies}

@@ -8,7 +8,7 @@ export class HomeExample extends React.Component {
     }
     return (
       <div>
-        <p>In a new component</p>
+        <h2>In a new component</h2>
         {/* for dynamic content we will have to use {2*2} */}
         {2 * 2}
 

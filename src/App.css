@@ -24,6 +24,10 @@
   color: white;
 }
 
+.active {
+  color: maroon;
+}
+
 .App-link {
   color: #61dafb;
 }
